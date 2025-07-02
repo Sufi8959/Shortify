@@ -10,6 +10,7 @@ import RegisterPage from "./components/RegisterPage";
 import { Toaster } from "react-hot-toast";
 import LoginPage from "./components/LoginPage";
 import DashboardLayout from "./components/Dashboard/DashboardLayout";
+import RedirectPage from "./components/RedirectPage";
 function App() {
   return (
     <>
@@ -19,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/s/:url" element={<ShortenUrlPage />} />
+          <Route path="/s/:shortUrl" element={<RedirectPage />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />

@@ -8,7 +8,7 @@ import { useContextApi } from "../context_api/ContextApi";
 const LoginPage = () => {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
-  const { setToken } = useContextApi();
+  const { setAccessToken } = useContextApi();
   const {
     register,
     handleSubmit,
@@ -26,11 +26,12 @@ const LoginPage = () => {
   const handleLogin = async (data) => {
     setLoader(true);
     try {
-      const { data: response } = await api.post("/api/auth/login", data);
+      const { data: response } = await api.post("/api/v1/users/login", data);
       console.log(response.token);
 
-      setToken(response.token);
-      localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token));
+      setAccessToken(response.accessToken);
+      localStorage.setItem("ACCESS_TOKEN", response.accessToken);
+      // localStorage.setItem("REFRESH_TOKEN", response.refreshToken); // if needed
       toast.success("Login Successful");
       reset();
       navigate("/dashboard");

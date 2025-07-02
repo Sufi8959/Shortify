@@ -5,18 +5,19 @@ export const useFetchMyShortUrls = (token, onError) => {
   return useQuery(
     "my-shortenurls",
     async () => {
-      return await api.get("/api/url/myurls", {
+      const res = await api.get("/api/url/myurls", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
           Authorization: "Bearer " + token,
         },
       });
+      return res.data.data; // Node.js backend returns { data: [...] }
     },
     {
       select: (data) => {
-        const sortedData = data.data.sort(
-          (a, b) => new Date(b.createdDate) - new Date(a.createdDate)
+        const sortedData = data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
         return sortedData;
       },
@@ -26,29 +27,20 @@ export const useFetchMyShortUrls = (token, onError) => {
   );
 };
 
-export const useFetchTotalClicks = (token, onError) => {
+export const useFetchTotalClicksPerDay = (token, onError) => {
   return useQuery(
     "url-totalclick",
     async () => {
-      return await api.get(
-        "/api/url/totalClicks?startDate=2024-01-01&endDate=2025-12-31",
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      const res = await api.get("/api/url/clicksPerDay", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: "Bearer " + token,
+        },
+      });
+      return res.data.data; // Node.js backend returns { data: { totalClicks: number } }
     },
     {
-      select: (data) => {
-        const convertToArray = Object.keys(data.data).map((key) => ({
-          clickDate: key,
-          count: data.data[key], // data.data[2024-01-01]
-        }));
-        return convertToArray;
-      },
       onError,
       staleTime: 5000,
     }

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useContextApi } from "../../context_api/ContextApi";
 import { useForm } from "react-hook-form";
-import { data } from "autoprefixer";
 import TextField from "../TextField";
 import { Tooltip } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
@@ -36,7 +35,9 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
       });
 
       const shortenUrl = `${
-        import.meta.env.VITE_REACT_FRONT_END_URL + "/s/" + `${res.shortUrl}`
+        import.meta.env.VITE_REACT_FRONT_END_URL +
+        "/s/" +
+        `${res.data.shortUrl}`
       }`;
       navigator.clipboard.writeText(shortenUrl).then(() => {
         toast.success("Short URL Copied to Clipboard", {

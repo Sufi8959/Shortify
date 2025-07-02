@@ -25,7 +25,7 @@ const RegisterPage = () => {
   const handleRegister = async (data) => {
     setLoader(true);
     try {
-      const { data: response } = await api.post("/api/auth/register", data);
+      await api.post("/api/v1/users/register", data);
       reset();
       navigate("/login");
       toast.success("Registration successful");

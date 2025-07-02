@@ -35,7 +35,7 @@ public class UrlMappingController {
 
         String originalUrl = request.get("originalUrl");
         if (principal == null || principal.getName() == null) {
-            throw new RuntimeException("User not authenticated.");
+            throw new RuntimeException("User not authenticated.");  
         }
 
         User user = userService.findByUserName(principal.getName());

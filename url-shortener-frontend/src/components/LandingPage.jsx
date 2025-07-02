@@ -8,11 +8,11 @@ let desc =
   "Generate short, memorable links with ease using Linklytics’s intuitive interface. Share URLs effortlessly across platforms. Optimize your sharing strategy with Linklytics. Track clicks and manage your links seamlessly to enhance your online presence. Generate short, memorable links with ease using Linklytics’s intuitive interface. Share URLs effortlessly across platforms.";
 
 const LandingPage = () => {
-  const { token } = useContextApi();
-  console.log("landing page" + token);
+  const { accessToken } = useContextApi();
+  console.log("landing page" + accessToken);
   const navigate = useNavigate();
   const isLoggedIn = () => {
-    token ? navigate("/dashboard") : navigate("/login");
+    accessToken ? navigate("/dashboard") : navigate("/login");
   };
   return (
     <div className="min-h-[calc(100vh-64px)]  lg:px-14 sm:px-8 px-4">
@@ -37,19 +37,6 @@ const LandingPage = () => {
             seconds. Simplify your sharing experience with Shortify today.
           </p>
           <div className="flex items-center gap-3">
-            {/* <motion.button
-              initial={{ opacity: 0, y: 80 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="bg-gradient-to-l from-blue-500 to-rose-500 w-40 text-white rounded-md  py-2"
-            >
-              Manage Links
-            </motion.button> */}
-
             <motion.button
               onClick={isLoggedIn}
               initial={{ opacity: 0, y: 80 }}

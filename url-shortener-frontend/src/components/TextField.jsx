@@ -21,6 +21,7 @@ const TextField = ({
       </label>
 
       <input
+        autoComplete="off"
         type={type}
         id={id}
         placeholder={placeholder}

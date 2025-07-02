@@ -19,9 +19,9 @@ ChartJS.register(
   Filler
 );
 
-const Graph = ({ graphData }) => {
+const Graph = ({ graphData = [] }) => {
   const labels = graphData?.map((item, i) => `${item.clickDate}`);
-  const userPerDaya = graphData?.map((item) => item.count);
+  const userPerDays = graphData?.map((item) => item.count);
 
   const data = {
     labels:
@@ -33,7 +33,7 @@ const Graph = ({ graphData }) => {
         label: "Total Clicks",
         data:
           graphData.length > 0
-            ? userPerDaya
+            ? userPerDays
             : [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1],
         backgroundColor:
           graphData.length > 0 ? "#3b82f6" : "rgba(54, 162, 235, 0.1)",
@@ -60,7 +60,7 @@ const Graph = ({ graphData }) => {
       y: {
         beginAtZero: true,
         ticks: {
-          // stepSize: 1,
+          stepSize: 1,
           callback: function (value) {
             if (Number.isInteger(value)) {
               return value.toString();
@@ -81,9 +81,9 @@ const Graph = ({ graphData }) => {
       },
       x: {
         beginAtZero: true,
-        // ticks: {
-        //   stepSize: 1,
-        // },
+        ticks: {
+          stepSize: 1,
+        },
         title: {
           display: true,
           text: "Date",
@@ -98,7 +98,7 @@ const Graph = ({ graphData }) => {
     },
   };
 
-  return <Bar className=" w-full" data={data} options={options}></Bar>;
+  return <Bar className="w-full" data={data} options={options}></Bar>;
 };
 
 export default Graph;

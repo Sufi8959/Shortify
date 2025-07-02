@@ -5,13 +5,13 @@ import { RxCross2 } from "react-icons/rx";
 import { useContextApi } from "../context_api/ContextApi";
 const Navbar = () => {
   const navigate = useNavigate();
-  const { token, setToken } = useContextApi();
+  const { accessToken, setAccessToken } = useContextApi();
   const path = useLocation().pathname;
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const onLogOutHandler = () => {
-    setToken(null);
-    localStorage.removeItem("JWT_TOKEN");
+    setAccessToken(null);
+    localStorage.removeItem("ACCESS_TOKEN");
     navigate("/login");
   };
   return (
@@ -47,7 +47,7 @@ const Navbar = () => {
               About
             </Link>
           </li>
-          {token && (
+          {accessToken && (
             <li className="hover:text-btnColor font-[500]  transition-all duration-150">
               <Link
                 className={`${
@@ -61,15 +61,13 @@ const Navbar = () => {
               </Link>
             </li>
           )}
-          {!token && (
+          {!accessToken ? (
             <Link to="/register">
               <li className=" sm:ml-0 -ml-1 bg-purple-700 text-white  cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md  hover:text-slate-300   transition-all duration-150">
                 SignUp
               </li>
             </Link>
-          )}
-
-          {token && (
+          ) : (
             <button
               onClick={onLogOutHandler}
               className="sm:ml-0 -ml-1 bg-purple-700 text-white  cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md  hover:text-slate-300   transition-all duration-150"
