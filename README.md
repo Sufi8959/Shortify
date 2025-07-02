@@ -8,7 +8,7 @@ Sign-Up page displaying a centered “Register Here” form with fields for User
 
 User Dashboard showing a bar chart labeled “Total Clicks” (currently no data), a “Create a New Short URL” button, and a shortened link entry (“localhost:5173/s/TQpZp2eF”) with click count and date, plus a “Copy” button.
 
-![Screenshot 2025-06-03 095538](https://github.com/user-attachments/assets/dfb42813-39c0-4c1c-9ffc-10486bc547d3)
+![Screenshot 2025-07-02 191042](https://github.com/user-attachments/assets/8d89b9e8-4774-4e83-a2b5-6b7301bb0dcc)
 
 Modal dialog on the Dashboard titled “Create New Shorten Url,” showing an input field to enter a URL (placeholder “https://example.com”) and a gradient “Create” button, overlaid on the bar chart and existing link list.
 
