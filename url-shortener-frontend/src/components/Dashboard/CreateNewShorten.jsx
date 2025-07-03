@@ -8,7 +8,7 @@ import api from "../../api/api";
 import toast from "react-hot-toast";
 
 const CreateNewShorten = ({ setOpen, refetch }) => {
-  const { token } = useContextApi();
+  const { accessToken } = useContextApi();
   const [loading, setLoading] = useState(false);
 
   const {
@@ -30,7 +30,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: "Bearer " + token,
+          Authorization: "Bearer " + accessToken,
         },
       });
 

@@ -12,7 +12,7 @@ export const useFetchMyShortUrls = (token, onError) => {
           Authorization: "Bearer " + token,
         },
       });
-      return res.data.data; // Node.js backend returns { data: [...] }
+      return res.data.data;
     },
     {
       select: (data) => {

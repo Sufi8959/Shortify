@@ -11,7 +11,7 @@ import {
 import { useContextApi } from "../../context_api/ContextApi";
 import { useNavigate } from "react-router-dom";
 function DashboardLayout() {
-  const { token } = useContextApi();
+  const { accessToken } = useContextApi();
   const navigate = useNavigate();
   const [shortenPopUp, setShortenPopUp] = useState(false);
   function onError() {
@@ -21,10 +21,10 @@ function DashboardLayout() {
     isLoading: loader,
     data: totalClicksPerDay = [],
     refetch,
-  } = useFetchTotalClicksPerDay(token, onError);
+  } = useFetchTotalClicksPerDay(accessToken, onError);
 
   const { isLoading, data: myShortenUrls } = useFetchMyShortUrls(
-    token,
+    accessToken,
     onError
   );
 

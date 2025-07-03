@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import TextField from "./TextField";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/api";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useContextApi } from "../context_api/ContextApi";
 const LoginPage = () => {
   const [loader, setLoader] = useState(false);
@@ -27,11 +27,10 @@ const LoginPage = () => {
     setLoader(true);
     try {
       const { data: response } = await api.post("/api/v1/users/login", data);
-      console.log(response.token);
 
-      setAccessToken(response.accessToken);
-      localStorage.setItem("ACCESS_TOKEN", response.accessToken);
-      // localStorage.setItem("REFRESH_TOKEN", response.refreshToken); // if needed
+      setAccessToken(response.data?.accessToken);
+      localStorage.setItem("ACCESS_TOKEN", response.data?.accessToken);
+      console.log(response.data?.accessToken);
       toast.success("Login Successful");
       reset();
       navigate("/dashboard");
