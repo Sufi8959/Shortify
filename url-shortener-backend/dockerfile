@@ -1,0 +1,17 @@
+FROM node:24-alpine3.21
+
+# create an app directory
+WORKDIR /app
+
+# install app dependencies
+COPY package*.json ./
+
+# run npm install
+RUN npm install
+
+#bundle app source
+COPY . .
+
+EXPOSE 8000
+
+CMD ["npm", "run", "dev"]  
