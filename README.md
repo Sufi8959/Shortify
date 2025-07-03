@@ -1,3 +1,6 @@
+This is the application live on vercel
+https://shortifyappv2.vercel.app/
+
 Homepage of Shortify showing the navigation bar (Home, About, SignUp), a hero section with headline (“Shortify Simplifies URL Shortening For Efficient Sharing”), a “Create Short Link” button, and feature cards below.
 
 ![Screenshot 2025-06-03 095046](https://github.com/user-attachments/assets/8d6eb478-827f-4cee-b5d1-bf297caf941a)
